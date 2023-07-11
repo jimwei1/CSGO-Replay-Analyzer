@@ -22,7 +22,7 @@ import seaborn as sns
 
 def commonStrategyQuestion():
     """
-    Calls functions in ProcessGameState.py to answer 2a: "Is entering via the light blue boundary a common strategy used by Team2 on T (terrorist) side?"
+    Calls functions in ProcessGameState.py to answer: "Is entering via the light blue boundary a common strategy used by Team2 on T (terrorist) side?"
     """
     # Get a copy of DataFrame
     dataFrameTeam2T = gameStateProcessor.getDataFrame()
@@ -33,7 +33,7 @@ def commonStrategyQuestion():
     # Filter DataFrame by light blue boundary
     enteringInformation = gameStateProcessor.enteringBoundaryPerRound(dataFrameTeam2T)
     print('-------------')
-    print("2a. Is entering via the light blue boundary a common strategy used by Team2 on T (terrorist) side?")
+    print("Is entering via the light blue boundary a common strategy used by Team2 on T (terrorist) side?")
     print('-------------')
     print(
         f"> Result: Percentage of times Team2 on T side enters the light blue boundary: {enteringInformation['percentage']}%.")
@@ -46,10 +46,10 @@ def commonStrategyQuestion():
 #2b
 def averageTimerQuestion():
     """
-    Calls functions in ProcessGameState.py to answer 2b: "What is the average timer that Team2 on T (terrorist) side enters 'BombsiteB' with least 2 rifles or SMGs?"
+    Calls functions in ProcessGameState.py to answer: "What is the average timer that Team2 on T (terrorist) side enters 'BombsiteB' with least 2 rifles or SMGs?"
     """
     print('-------------')
-    print("2b. What is the average timer that Team2 on T (terrorist) side enters 'BombsiteB' with least 2 rifles or SMGs?")
+    print("What is the average timer that Team2 on T (terrorist) side enters 'BombsiteB' with least 2 rifles or SMGs?")
 
     # Select for Rifle and SMG
     relevantWeapons = ['Rifle', 'SMG']
@@ -84,7 +84,7 @@ def averageTimerQuestion():
 #2c
 def heatMapQuestion():
     """
-    Generates Heatmap to answer 2c: "Now that we've gathered data on Team2 T side, let's examine their CT (counter-terrorist) Side. Using the same data
+    Generates Heatmap to answer: "Now that we've gathered data on Team2 T side, let's examine their CT (counter-terrorist) Side. Using the same data
     set, tell our coaching staff where you suspect them to be waiting inside "BombsiteB."
     """
     # Create a copy of the DataFrame

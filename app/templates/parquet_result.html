@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parquet File Result</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Good to know...</h1>
+
+      {% if success_message %}
+      <div class="alert alert-success mt-4">{{ success_message }}</div>
+      <a href="/" class="btn btn-secondary">Navigate back</a>
+      <div class="mt-4">
+        <h3>Your parquet file has <u>{{ row_count }}</u> rows.</h3>
+      </div>
+      {% if head_columns and row_count %}
+      <div class="mt-4">
+        <h3>Head columns:</h3>
+        <ul class="list-group">
+          {% for column in head_columns %}
+          <li class="list-group-item">{{ column }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %} {% endif %} {% if error_message %}
+      <div class="alert alert-danger mt-4">{{ error_message }}</div>
+      {% endif %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

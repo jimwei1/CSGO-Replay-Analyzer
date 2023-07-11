@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game State Processing</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="mt-4">Game State Processing</h1>
+      <a href="/" class="btn btn-secondary">Go back</a>
+
+      <form
+        method="POST"
+        action="{{ url_for('game_state.game_state_processing') }}"
+      >
+        <div class="form-group">
+          <label for="parquet"><strong>Select Parquet File</strong></label>
+          <select class="form-control" name="parquet" id="parquet">
+            {% for parquet in parquet_files %}
+            <option value="{{ parquet }}">{{ parquet }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="radar"><strong>Select Radar Image</strong></label>
+          <select class="form-control" name="radar" id="radar">
+            {% for radar in radar_files %}
+            <option value="{{ radar }}">{{ radar }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="boundaries"><strong>Boundaries</strong></label>
+          <div id="coordinates-container">
+            <div class="coordinate-input">
+              <label>Boundary 1 - X Coordinate:</label>
+              <input type="number" class="form-control" name="x[]" required />
+              <label>Boundary 1 - Y Coordinate:</label>
+              <input type="number" class="form-control" name="y[]" required />
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn btn-secondary mr-2"
+          id="add-coordinate"
+        >
+          Add Coordinate
+        </button>
+        <button type="button" class="btn btn-secondary" id="remove-coordinate">
+          Remove Coordinate
+        </button>
+        <br />
+        <br />
+        <input type="submit" class="btn btn-primary" value="Process" />
+      </form>
+      {% if message %}
+      <p class="mt-4" style="color: green">{{ message }}</p>
+      {% endif %}
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      const coordinatesContainer = document.getElementById(
+        "coordinates-container"
+      );
+      const addCoordinateBtn = document.getElementById("add-coordinate");
+      const removeCoordinateBtn = document.getElementById("remove-coordinate");
+      addCoordinateBtn.addEventListener("click", addCoordinateInput);
+      removeCoordinateBtn.addEventListener("click", removeCoordinateInput);
+
+      function addCoordinateInput() {
+        const coordinateInput = document.createElement("div");
+        coordinateInput.className = "coordinate-input";
+        coordinateInput.innerHTML = `
+          <label>Boundary ${
+            coordinatesContainer.childElementCount + 1
+          } - X Coordinate:</label>
+          <input type="number" class="form-control" name="x[]" required>
+          <label>Boundary ${
+            coordinatesContainer.childElementCount + 1
+          } - Y Coordinate:</label>
+          <input type="number" class="form-control" name="y[]" required>
+        `;
+        coordinatesContainer.appendChild(coordinateInput);
+      }
+
+      function removeCoordinateInput() {
+        if (coordinatesContainer.childElementCount > 1) {
+          coordinatesContainer.removeChild(
+            coordinatesContainer.lastElementChild
+          );
+        }
+      }
+    </script>
+  </body>
+</html>
