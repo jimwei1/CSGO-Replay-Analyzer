@@ -19,7 +19,6 @@ import matplotlib.colors as mcolors
 #Seaborn for Heatmap
 import seaborn as sns
 
-
 def commonStrategyQuestion():
     """
     Calls functions in ProcessGameState.py to answer: "Is entering via the light blue boundary a common strategy used by Team2 on T (terrorist) side?"
@@ -43,7 +42,6 @@ def commonStrategyQuestion():
     print(enteringInformation['rounds'])
     return
 
-#2b
 def averageTimerQuestion():
     """
     Calls functions in ProcessGameState.py to answer: "What is the average timer that Team2 on T (terrorist) side enters 'BombsiteB' with least 2 rifles or SMGs?"

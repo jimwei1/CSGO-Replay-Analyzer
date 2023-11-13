@@ -71,3 +71,4 @@ The following external libraries were used in this assignment. These are require
 
 ## Credits:
 Overpass Callouts Image: https://teams.gg/blog/csgo-overpass-callouts/
+Parsing: https://www.sbgames.org/proceedings2021/WorkshopG2/219280.pdf
